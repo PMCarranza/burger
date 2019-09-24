@@ -15,7 +15,7 @@ router.get('/', function (re, res) {
         res.render('index', hbsObject);
     });
 });
-////// I think I need to create a 'Partials' folder inside the views with a 'burguers' document in it to make the following work///////////
+////// I think I need to create a 'Partials' folder inside the views with a 'burgers' document in it to make the following work///////////
 router.post('/api/burgers', function(req, res){
     burger.create([
         'name', 'devoured'
