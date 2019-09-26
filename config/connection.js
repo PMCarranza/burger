@@ -1,6 +1,8 @@
 // setup MySQL connection
+// var mysqql is being passed the mysql module to manipulate the MySQL database
 var mysql = require('mysql');
 
+// connction to the DB is created
 var connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,

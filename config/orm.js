@@ -1,4 +1,5 @@
 // Import MySQL connection.
+// the path for connection.js is passed to the var connection
 var connection = require('../config/connection.js')
 
 // Helper function for SQL syntax.
@@ -9,7 +10,7 @@ var connection = require('../config/connection.js')
 function printQuestionMarks(num) {
     var arr = [];
 
-    for (var i = 0; i < num; i++){
+    for (var i = 0; i < num; i++) {
         arr.push('?');
     }
 
@@ -20,12 +21,12 @@ function printQuestionMarks(num) {
 function objToSql(ob) {
     var arr = [];
 
-  // loop through the keys and push the key/value as a string int arr
+    // loop through the keys and push the key/value as a string int arr
     for (var key in ob) {
         var value = ob[key];
         // check to skip hidden properties
         if (Object.hasOwnPorperty.call(ob, key)) {
-                  // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+            // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
             if (typeof value === 'string' && value.indexOf('') >= 0) {
                 value = "'" + value + '';
             };
@@ -35,14 +36,17 @@ function objToSql(ob) {
         };
     };
 
-      // translate array of strings to a single comma-separated string
+    // translate array of strings to a single comma-separated string
     return arr.toString();
 };
 
+// Object Relational Mapping (ORM) is the process of mapping between objects and relational database systems.
 // Object for all our SQL statement functions.
 var orm = {
     all: function (tableInput, cb) {
+        // selects everything from the databse based on the tableInput parameter and passes that to queryString
         var queryString = 'SELECT * FROM ' + tableInput + ';';
+        // The ‘query’ method of the connection object requires a callback function which will be executed whenever either one of the two events fires – error, result. Here the callback is registered as a anonymous function https://www.codediesel.com/nodejs/querying-mysql-with-node-js/
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -51,26 +55,31 @@ var orm = {
         });
     },
     create: function (table, cols, vals, cb) {
+        // statement used to insert values from parameter table, adding to what passed to queryString inside orm objetd
         var queryString = 'INSERT INTO ' + table;
-
+        // opens parenthesis before the table name
         queryString += '(';
+        // the parameter in cols gets added after the parenthesis as a string
         queryString += cols.toString();
+        // closes parenthesis
         queryString += ')';
+        // adds VALUES which is part of the sql query
         queryString += 'VALUES (';
+        // adds the call to the funciton with its parameters
         queryString += printQuestionMarks(vals.length);
+        // adds a closing parenthesis to the 
         queryString += ')';
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function(err, result){
-            if(err) {
+        connection.query(queryString, vals, function (err, result) {
+            if (err) {
                 throw err;
             }
-
             cb(result);
         });
     },
-      // An example of objColVals would be {name: panther, sleepy: true}
+    // An example of objColVals would be {name: panther, sleepy: true}
     update: function (table, objColVals, condition, cb) {
         var queryString = 'UPDATE ' + table;
 
@@ -84,11 +93,10 @@ var orm = {
             if (err) {
                 throw err;
             };
-
             cb(result);
         });
-}
+    }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;

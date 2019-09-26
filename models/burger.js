@@ -1,6 +1,8 @@
 // Import the ORM to create functions that will interact with the database.
+// the path for orm.js is passed to the var orm
 var orm = require("../config/orm.js");
 
+// creating burger object
 var burger = {
     all: function (cb) {
         orm.all('burgers', function (res) {
@@ -33,5 +35,5 @@ var burger = {
     }
 };
 
-// Export the database functions for the controller (catsController.js).
+// Export the database functions for the controller (burgerController.js).
 module.exports = burger;
