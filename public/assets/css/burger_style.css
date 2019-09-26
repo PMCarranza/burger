@@ -34,6 +34,12 @@ h1{
     color: rgb(133, 5, 192);
 }
 
+#burger img{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
+
 h2{
     font-size: 2em;
     font-weight: bold;

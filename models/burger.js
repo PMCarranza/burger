@@ -14,7 +14,11 @@ var burger = {
         });
     },
     // The variables cols and vals are arrays.
+    // invokes anonymous function that declares three parameters
+    // burger.create (in burger.controllerjs) must take in 'columns' to insert into their respectives values, and a callback (cb) function
     create: function (cols, vals, cb) {
+    // orm.creat() allows teh code base to dinamically insert data into a provided table
+        // solely responsible for interaction with the DB and sending data back to our model
         orm.create('burguers', cols, vals, function (res) {
             cb(res);
             console.log('========== C R E A T E ==========');

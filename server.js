@@ -19,22 +19,27 @@ app.use(express.urlencoded({ extended: true }));
 
 // express.json() is a method built in express to recognize the incoming Request Object as a JSON Object.
 // app.use() mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path. https://expressjs.com/en/4x/api.html#app.use
+// returns req.body
 app.use(express.json());
 
 // Set Handlebars
 // Handlebars.js is a popular templating engine that is powerful, simple to use and has a large community. It is based on the Mustache template language, but improves it in several important ways. With Handlebars, you can separate the generation of HTML from the rest of your JavaScript and write cleaner code.
 // instance of handlebars is passed to the exphbs variable
+// adds easy reusability
 var exphbs = require('express-handlebars');
 
-// By default, Express will require() the engine based on the file extension. In this case handlebar and express-handlebars are being requiered.
+// By default, Express will require() the engine based on the file extension. In this case handlebar and express-handlebars are being required.
+// the folder structure for this is the views(folder)layouts,partials(subfolders), index.handelbars in views
 app.engine('handlebars', exphbs({ defaulLayout: 'main' }));
+
 // After the view engine is set, there is no need to specify the engine or load the template engine module in the app; Express loads the module internally
+// this is better explained in controller.js where the html files are referenced
 app.set('view engine', 'handlebars');
 
-// Import routes and give the server access to them.
+// passing the path of controllers.js to routes
 var routes = require('./controllers/burger_controllers.js');
 
-// app.use() mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path. https://expressjs.com/en/4x/api.html#app.use, in this case the variable routes contains the required path
+// app.use() mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path. https://expressjs.com/en/4x/api.html#app.use, in this case the variable routes contains the required path for controller.js
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.

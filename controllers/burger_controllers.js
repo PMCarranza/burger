@@ -1,11 +1,18 @@
+console.log('controllers - burgercontroller.js');
 var express = require('express');
 
+// Routing refers to how an application’s endpoints (URIs) respond to client requests.
+// A route method is derived from one of the HTTP methods, and is attached to an instance of the express class.
 var router = express.Router();
 
 // Import the model (burguer.js) to use its database functions.
 var burger = require('../models/burger.js');
+// console.log('burger_controller --> var burger--> ', burger);
 
 // Create all our routes and set up logic within those routes where required.
+
+// This one gets matched with the GET from the ajax called in public/js/burger.js
+// req and res come from express declared in server.js
 router.get('/', function (req, res) {
     burger.all(function (data) {
         var hbsObject = {
@@ -15,14 +22,19 @@ router.get('/', function (req, res) {
         res.render('index', hbsObject);
     });
 });
-////// I think I need to create a 'Partials' folder inside the views with a 'burgers' document in it to make the following work///////////
-router.post('/api/burgers', function(req, res){
+// This one gets matched with the POST from the ajax called in public/js/burger.js//
+router.post('/api/burgers', function (req, res) {
+    // burger.create is a high level method that inserts a new burger into the burger table in the DB
+    // values  accessible vie req.body
+    // callback capture a succesful DB call and responds to the client
+    // the callback (res) is invoked via cb(res inside .create() method in burger.js model
+    // This one gets matched with the create from the ajax called in public/js/burger.js
     burger.create([
         'name', 'devoured'
     ], [
         req.body.name, req.body.devoured
     ], function (result) {
-        // Send back the ID of the new quote
+        // Send back the ID of the new quote 
         res.json({ id: result.insertId });
     });
 });

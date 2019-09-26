@@ -1,3 +1,4 @@
+console.log('config - orm.js');
 // Import MySQL connection.
 // the path for connection.js is passed to the var connection
 var connection = require('../config/connection.js')
