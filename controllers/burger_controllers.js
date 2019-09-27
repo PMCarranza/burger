@@ -22,6 +22,12 @@ router.get('/', function (req, res) {
         res.render('index', hbsObject);
     });
 });
+
+router.get('/api/burgers', function (req, res) {
+    burger.all(function (data) {
+        res.json(data);
+    })
+})
 // This one gets matched with the POST from the ajax called in public/js/burger.js//
 router.post('/api/burgers', function (req, res) {
     // burger.create is a high level method that inserts a new burger into the burger table in the DB
@@ -30,9 +36,9 @@ router.post('/api/burgers', function (req, res) {
     // the callback (res) is invoked via cb(res inside .create() method in burger.js model
     // This one gets matched with the create from the ajax called in public/js/burger.js
     burger.create([
-        'name', 'devoured'
+        'burgerName', 'isDevoured'
     ], [
-        req.body.name, req.body.devoured
+        req.body.burgerName, req.body.isDevoured
     ], function (result) {
         // Send back the ID of the new quote 
         res.json({ id: result.insertId });
