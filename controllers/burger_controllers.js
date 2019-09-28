@@ -46,10 +46,7 @@ router.post('/api/burgers', function (req, res) {
 });
 
 router.put('/api/burgers/:id', function (req, res) {
-    console.log('controller.js line 49 req.body--> ' + req.body);
-    console.log(JSON.stringify(req.body));
     console.log(req.query);
-    console.log('controller.js line 50 req.query--> ' + req.query);
 
     var condition = 'id = ' + req.params.id;
 
