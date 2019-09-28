@@ -38,7 +38,7 @@ router.post('/api/burgers', function (req, res) {
     burger.create([
         'burgerName', 'isDevoured'
     ], [
-            req.body.burgerName, req.body.isDevoured
+        req.body.burgerName, req.body.isDevoured
     ], function (result) {
         // Send back the ID of the new quote 
         res.json({ id: result.insertId });
@@ -46,8 +46,11 @@ router.post('/api/burgers', function (req, res) {
 });
 
 router.put('/api/burgers/:id', function (req, res) {
-    console.log(req.body);
+    console.log('controller.js line 49 req.body--> ' + req.body);
+    console.log(JSON.stringify(req.body));
     console.log(req.query);
+    console.log('controller.js line 50 req.query--> ' + req.query);
+
     var condition = 'id = ' + req.params.id;
 
     console.log('-v-v-  condition in burger_controller.js line 31  -v-v ');
