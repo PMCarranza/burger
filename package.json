@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/PMCarranza/burger#readme",
   "dependencies": {
+    "config": "^3.2.2",
     "config.json": "0.0.4",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
