@@ -26,8 +26,8 @@ router.get('/', function (req, res) {
 router.get('/api/burgers', function (req, res) {
     burger.all(function (data) {
         res.json(data);
-    })
-})
+    });
+});
 // This one gets matched with the POST from the ajax called in public/js/burger.js//
 router.post('/api/burgers', function (req, res) {
     // burger.create is a high level method that inserts a new burger into the burger table in the DB
@@ -38,20 +38,22 @@ router.post('/api/burgers', function (req, res) {
     burger.create([
         'burgerName', 'isDevoured'
     ], [
-        req.body.burgerName, req.body.isDevoured
+            req.body.burgerName, req.body.isDevoured
     ], function (result) {
         // Send back the ID of the new quote 
         res.json({ id: result.insertId });
     });
 });
 
-router.put('api/burgers/:id', function (req, res) {
+router.put('/api/burgers/:id', function (req, res) {
+    console.log(req.body);
+    console.log(req.query);
     var condition = 'id = ' + req.params.id;
 
-    console.log('condition in burger_controller.js line 31--> ' + condition);
-
+    console.log('-v-v-  condition in burger_controller.js line 31  -v-v ');
+    console.log(condition);
     burger.update({
-        devoured: req.body.devoured
+        isDevoured: req.body.isDevoured
     }, condition, function (result) {
         if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404

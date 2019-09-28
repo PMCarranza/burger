@@ -26,10 +26,10 @@ function objToSql(ob) {
     for (var key in ob) {
         var value = ob[key];
         // check to skip hidden properties
-        if (Object.hasOwnPorperty.call(ob, key)) {
+        if (Object.hasOwnProperty.call(ob, key)) {
             // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
             if (typeof value === 'string' && value.indexOf('') >= 0) {
-                value = "'" + value + '';
+                value = '' + value + '';
             };
             // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
             // e.g. {sleepy: true} => ["sleepy=true"]
@@ -87,14 +87,14 @@ var orm = {
         queryString += ' SET ';
         queryString += objToSql(objColVals);
         queryString += ' WHERE ';
-        queryString += condtition;
+        queryString += condition;
 
         console.log('This is queryString--> ' + queryString);
         connection.query(queryString, function (err, results) {
             if (err) {
                 throw err;
             };
-            cb(result);
+            cb(results);
         });
     }
 };

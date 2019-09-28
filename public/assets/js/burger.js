@@ -1,18 +1,16 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 console.log('public-assets-js-burger.js');
 $(function () {
+
+    // adding a burger 
     $('#add-burger').on('click', function (event) {
         event.preventDefault();
-        // console.log(this);
-        var id = $(this).attr('id');
-        // var newDevoured = $(this).data('devoured');
-        // console.log('js - burger.js --> devoured --> ', newDevoured);
 
-        var isDevoured = $('input[name=devoured]:checked').val();
+        // var isDevoured = $('input[name=isDevoured]:checked').val();
         var burgerName = $('#bur').val().trim();
 
         var newBurger = {
-            isDevoured: isDevoured,
+            isDevoured: 0,
             burgerName: burgerName
         };
         // console.log('newDevouredState --> ', newDevouredState);
@@ -22,32 +20,41 @@ $(function () {
             data: newBurger
         }).then(
             function () {
-                console.log('public burger.js --> Changed Devoured to --> ', newDevoured);
+                console.log('public burger.js --> Changed Devoured to --> ', newBurger.isDevoured);
                 // Reload the page to get the updated list
+                // console.log('js/burger.js isDevoured line 9 -->' + newBurger.isDevoured);
+                // console.log('js/burger.js burgerName line 10 -->' + newBurger.isDevoured);
                 location.reload();
-            }
-        );
+            });
+
     });
 
-//     $('create-form').on('submit', function (event) {
-//         // Make sure to preventDefault on a submit event.
-//         event.preventDefault();
-//         var newBurger = {
-//             name: $('#bur').val().trim(),
-//             devoured: $('[name=devoured]:checked').val().trim()
-//         };
-//         console.log('js - burger.js - newBurger --> ', newBurger.name)
+    // changing the burger "state" devoured/not devoured to devoured/not devoured
 
-//         // Send the POST request.
-//         $.ajax('api/cats', {
-//             type: 'POST',
-//             data: newBurger
-//         }).then(
-//             function () {
-//                 console.log('public --> cat.js --> created new burger');
-//                 // Reload the page to get the updated list
-//                 location.reload();
-//             }
-//         );
-//     });
-// });
+    $('.change-devoured').on('click', function (event) {
+        event.preventDefault();
+        // console.log('this in burger.js line 6--> ');
+        // console.log(this);
+        var id = $(this).attr('id');
+        // console.log('id --> is ' + id);
+        // var switchBurger = $('input[name=isDevoured]:checked').val();
+        // console.log('js/burger.js switchBurger line 38 -->' + switchBurger);
+        var switchBurger = 1;
+
+
+        var switchBurgerState = {
+            isDevoured: switchBurger
+        };
+        // send the PUT request
+        $.ajax('/api/burgers/' + id, {
+            type: 'PUT',
+            data: switchBurgerState
+        }).then(
+            function () {
+                console.log('js/burger.js line 47 changed burger to --> ' + switchBurger);
+                // reload the page to get the updated list
+                location.reload();
+            }
+        )
+    })
+});
