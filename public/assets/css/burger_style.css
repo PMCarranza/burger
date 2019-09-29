@@ -3,7 +3,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     align-content: center;
-    background-color: rgb(176, 207, 216);
+    background-color: rgb(136, 231, 243);
 }
 
 .jumbotron{
@@ -11,6 +11,7 @@ body{
     background-image: url(../img/hamburguesa.jpg);
     opacity: .75;
     background-size: auto;
+    margin-bottom: 1.5em;
 }
 
 h1.display-3{
@@ -29,10 +30,11 @@ p.lead{
 }
 
 h1{
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
     text-align: center;
-    color: rgb(133, 5, 192);
+    color: darkblue;
+    margin-bottom: 1em;
 }
 
 h2{
@@ -41,13 +43,7 @@ h2{
 
 div#headers{
     display: flex;
-    justify-content: space-between;
-}
-
-img{
-    margin: 2em;
-    width: 20%;
-    height: 20%;
+    justify-content: space-around;
 }
 
 div#main{
@@ -55,12 +51,36 @@ div#main{
     display: flex;
     justify-content: space-around;
 }
-ul#left{
-    width: 35%;
+
+button.change-devoured{
+    font-size: .5em;
+    font-weight: bold;
+    padding: .25em;
+    align-content: 0 auto;
+    background-color: rgb(70, 141, 223);
+    border-radius: 5px;
+    color: whitesmoke;
+    text-align: center;
+    -webkit-transition-duration: 0.9s;
+    transition-duration: 0.9s;
+    cursor: pointer;
 }
 
-ul#right{
-    width: 40%;
+button.change-devoured:hover{
+    background-color: whitesmoke;
+    color: darkblue;
+}
+
+ul#left li{
+    color:darkblue;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+ul#right li{
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 h2{
@@ -71,12 +91,23 @@ h2{
     color:darkblue;
 }
 
+img{
+    width: 20%;
+    height: 20%;
+}
+
+
+div#dibujos{
+    display: flex;
+    justify-content: space-around;
+}
+
 h4{
     margin-top: 1em;
     font-size: 2em;
     font-weight: bold;
     text-align: center;
-    color:green;
+    color:rgb(18, 129, 18);
 }
 
 form.create-form{
@@ -89,25 +120,43 @@ form.create-form{
 li {
     padding: 5px;
     margin: 5px;
-    /* background: #faebd7; */
 }
 
-.label {
+input#bur{
+    background-color: lightgrey;
+    width: 40%;
+}
+
+button#add-burger{
+    font-size: 1em;
     font-weight: bold;
+    padding: .25em;
+    background-color: rgb(18, 129, 18);
+    border-radius: 10px;
+    color: whitesmoke;
+    text-align: center;
+    -webkit-transition-duration: 0.9s;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    margin-bottom: 8em;
 }
 
-.create-update-form {
-    padding: 5px;
-    margin: 5px;
-    background: aqua;
+button#add-burger:hover{
+    background-color: whitesmoke;
+    color: rgb(18, 129, 18);
 }
 
-ul#right li{
-    color: red;
-    font-size: 1.5em;
-    font-weight: bold;
+footer{
+    margin-left: 5%;
+    background-color: slategray;
+    height: 3em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: slategray;
+    color:whitesmoke;
+    font-size: .5em;
+
 }
 
-.form-group {
-    margin-bottom: 5px;
-}
+

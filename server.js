@@ -42,6 +42,14 @@ var routes = require('./controllers/burger_controllers.js');
 // app.use() mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path. https://expressjs.com/en/4x/api.html#app.use, in this case the variable routes contains the required path for controller.js
 app.use(routes);
 
+// // Timeout
+// app.use(timeout(15000));
+// app.use(haltOnTimedout);
+
+// function haltOnTimedout(req, res, next) {
+//     if (!req.timedout) next();
+// };
+
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
     // Log (server-side) when our server has started

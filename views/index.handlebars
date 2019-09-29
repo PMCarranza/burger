@@ -1,9 +1,9 @@
-<h1>Burgers!</h1>
+<h1>Want fries with that?</h1>
 
 <div id="headers">
 
-    <h2 id="lft-hdr"> To be Devoured!</h2>
-    <h2 id="rgt-hdr"> Have been Devoured</h2>
+    <h2 id="lft-hdr"> How do these look?</h2>
+    <h2 id="rgt-hdr"> These are gone!</h2>
 
 </div>
 
@@ -17,8 +17,6 @@
         {{/each}}
     </ul>
 
-    <img src="/assets/img/hamburger.png">
-
     <ul id="right">
         {{#each burger}}
         {{#if isDevoured}}
@@ -29,7 +27,14 @@
 
 </div>
 
-<h4> Make your own!</h4>
+<div id="dibujos">
+
+    <img src="/assets/img/hamburger.png">
+    <img src="/assets/img/bebida.png">
+
+</div>
+
+<h4> or you could make your own!</h4>
 
 <form class="create-form">
 
@@ -39,9 +44,5 @@
     </div>
 
     <button type="submit" id="add-burger">Add Da Burger!</button>
-
-    <div id="drink">
-        <img src="/assets/img/bebida.png">
-    </div>
 
 </form>
