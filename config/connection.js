@@ -11,6 +11,9 @@ var connection = mysql.createConnection({
     password: 'password',
     database: 'burgers_DB'
 });
+if (process.env.NODE_ENV === "production") {
+    connection = mysql.createConnection(process.env.NODE_ENV);s
+}
 
 // make connection
 connection.connect(function (err) {
