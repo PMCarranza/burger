@@ -43,12 +43,12 @@ var routes = require('./controllers/burger_controllers.js');
 app.use(routes);
 
 // // Timeout
-// app.use(timeout(15000));
-// app.use(haltOnTimedout);
+function haltOnTimedout(req, res, next) {
+    if (!req.timedout) next();
+};
 
-// function haltOnTimedout(req, res, next) {
-//     if (!req.timedout) next();
-// };
+app.use(timeout(15000));
+app.use(haltOnTimedout);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
