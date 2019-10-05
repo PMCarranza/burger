@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
     database: 'burgers_DB'
 });
 if (process.env.NODE_ENV === "production") {
-    connection = mysql.createConnection(process.env.NODE_ENV);
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
 }
 
 // make connection
