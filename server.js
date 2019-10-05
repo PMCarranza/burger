@@ -2,6 +2,8 @@
 // require express creates an instance of an Express application and this is passed to the variable express
 var express = require('express');
 
+require('dotenv').config();
+
 // process.env is a global variable injected by Node ar runtime for the application to use and it represents the state of the system enviroment the app is in when it starts
 // variable PORT takes the value of whatever is in proceess.env.PORT and uses it or if nothing found uses 8080
 var PORT = process.env.PORT || 8080;

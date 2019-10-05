@@ -1,5 +1,6 @@
 // setup MySQL connection
 // var mysqql is being passed the mysql module to manipulate the MySQL database
+require('dotenv').config();
 console.log('config-connection.js');
 var mysql = require('mysql');
 
