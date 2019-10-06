@@ -1,14 +1,15 @@
 body{
     max-width: 90%;
+    margin:auto;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
-    align-content: center;
+    /* align-content: center; */
     background-color: rgb(187, 223, 228);
 }
 
 .jumbotron{
     margin-top: 5%;
-    margin-left: 5%;
+    /* margin-left: 5%; */
     background-image: url(../img/hamburguesa.jpg);
     /* opacity: .75; */
     background-size: auto;
@@ -33,9 +34,16 @@ p.lead{
 h1{
     font-size: 3em;
     font-weight: bold;
-    text-align: center;
+    margin:auto;
+    /* text-align: center; */
     color: darkblue;
     margin-bottom: 1em;
+}
+
+div#top{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom:3em;
 }
 
 h2{
@@ -69,18 +77,18 @@ button.change-devoured{
 
 button.change-devoured:hover{
     background-color: whitesmoke;
-    color: darkblue;
+    color: rgb(70, 141, 223);
 }
 
 ul#left li{
     color:darkblue;
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
 ul#right li{
     color: red;
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
@@ -97,25 +105,20 @@ img{
     height: 20%;
 }
 
-
-div#dibujos{
-    display: flex;
-    justify-content: space-around;
-}
-
 h4{
     margin-top: 1em;
     font-size: 2em;
     font-weight: bold;
     text-align: center;
-    color:rgb(18, 129, 18);
+    color:rgb(18, 62, 129);
 }
 
 form.create-form{
     font-size: 1.5em;
     font-weight: bold;
-    color:blue;
+    color:darkblue;
     text-align: center;
+    margin-bottom: 8em;
 }
 
 li {
@@ -132,23 +135,39 @@ button#add-burger{
     font-size: 1em;
     font-weight: bold;
     padding: .25em;
-    background-color: rgb(18, 129, 18);
+    background-color: rgb(70, 141, 223);
     border-radius: 10px;
     color: whitesmoke;
     text-align: center;
     -webkit-transition-duration: 0.9s;
     transition-duration: 0.3s;
     cursor: pointer;
-    margin-bottom: 8em;
 }
 
 button#add-burger:hover{
     background-color: whitesmoke;
-    color: rgb(18, 129, 18);
+    color: rgb(70, 141, 223);
+}
+
+button.delete-burger{
+    font-size: .4em;
+    font-weight: bold;
+    padding: .25em;
+    background-color: rgb(240, 42, 15);
+    border-radius: 10px;
+    color: whitesmoke;
+    text-align: center;
+    -webkit-transition-duration: 0.9s;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+button.delete-burger:hover{
+    background-color: whitesmoke;
+    color: rgb(240, 42, 15);
 }
 
 footer{
-    margin-left: 5%;
     background-color: slategray;
     height: 3em;
     display:flex;
@@ -157,7 +176,4 @@ footer{
     background-color: slategray;
     color:whitesmoke;
     font-size: .5em;
-
 }
-
-
