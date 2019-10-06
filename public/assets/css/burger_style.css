@@ -3,13 +3,14 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     align-content: center;
-    background-color: rgb(136, 231, 243);
+    background-color: rgb(187, 223, 228);
 }
 
 .jumbotron{
+    margin-top: 5%;
     margin-left: 5%;
     background-image: url(../img/hamburguesa.jpg);
-    opacity: .75;
+    /* opacity: .75; */
     background-size: auto;
     margin-bottom: 1.5em;
 }

@@ -96,7 +96,28 @@ var orm = {
             };
             cb(results);
         });
-    }
+    },
+
+     // orm.delete -> set to an anonymous function that delcares the table name, condition, and callback
+    delete: function (table, condition, cb) {
+    //build sql query
+        var queryString = 'DELETE FROM ' + table;
+        queryString += ' WHERE ';
+        queryString += condition;
+        console.log('condition--> ' + condition);
+
+        console.log('This is queryString for DELETE--> ' + queryString);
+
+        //outputs --> 'DELETE FROM burers WHERE id =1';
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+            //send back data via cb() so that the data can be captured in our models
+            cb(result);
+        })
+} 
+
 };
 
 // Export the orm object for the model (burger.js).

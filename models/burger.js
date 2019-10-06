@@ -17,7 +17,7 @@ var burger = {
     // invokes anonymous function that declares three parameters
     // burger.create (in burger.controllerjs) must take in 'columns' to insert into their respectives values, and a callback (cb) function
     create: function (cols, vals, cb) {
-    // orm.creat() allows teh code base to dinamically insert data into a provided table
+        // orm.creat() allows teh code base to dinamically insert data into a provided table
         // solely responsible for interaction with the DB and sending data back to our model
         orm.create('burgers', cols, vals, function (res) {
             cb(res);
@@ -35,6 +35,15 @@ var burger = {
             console.table(res);
             console.log('========== U P D A T E D ==========');
 
+        });
+    },
+
+    // burger.delete is set to an anoymous function where we declare a condition and a cb
+
+    delete: function (condition, cb) {
+        // declare orm.delete and pass in the table to query (burgers), the condition(where to delete) and the callback function for what to do after the database call
+        orm.delete('burgers', condition, function (res) {
+            cb(res);
         });
     }
 };

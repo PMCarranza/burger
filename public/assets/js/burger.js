@@ -51,10 +51,34 @@ $(function () {
             data: switchBurgerState
         }).then(
             function () {
-                console.log('js/burger.js line 47 changed burger to --> ' + switchBurger);
+                console.log('js/burger.js line 45 changed burger to --> ' + switchBurger);
                 // reload the page to get the updated list
                 location.reload();
             }
         )
-    })
+    });
+
+    $(".delete-burger").on("click", function (event) {
+        // event.preventDefault();
+        // We need the id of the burger so that we can tell mysql which burger id to delete
+        // reference the object that caused the event via 'this' and grab the data-id value via .data()
+        var id = $(this).attr("id");
+    
+        console.log(this);
+        console.log('burgerjs --> id ' + id);
+        
+
+        // Send the DELETE request.
+        // url example -> localhost:808-/api/burgers/1
+        // this api call communitcates to our router.delete('/api/burgers/:id') route
+        $.ajax('/api/burgers/' + id, {
+            type: 'DELETE'
+        }).then(function () {
+            console.log("deleted burger", id);
+            // Reload the page to get the updated list
+            location.reload();
+        }
+        );
+    });
+
 });

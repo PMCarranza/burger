@@ -64,5 +64,22 @@ router.put('/api/burgers/:id', function (req, res) {
     });
 });
 
+router.delete('/api/burgers/:id', function (req, res) {
+    // reference the burger id via req.params.id
+    // set the condition for WHERE in sql table to delete  
+    var condition = 'id=' + req.params.id;
+    // burger.delete() takes in 2 arguments, the condition and the callback function after a successful database call
+    burger.delete(condition, function (result) {
+        // If nothing in the database was affected, the provided id was not found (404)
+        if (result.affectedRows === 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            ; return res.status(404).end();
+        } else {
+            //status 200 -> OK
+            res.status(200).end()
+        }
+    });
+});
+
 // Export routes for server.js to use.
 module.exports = router;
