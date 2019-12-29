@@ -30,5 +30,5 @@ I put together this app following instructional direction, research, code review
 ### **Here is a quick demonstration**
 <img src="public/assets/img/burger.gif">
 
-### **This is a screen capture of the empty database before the inputs were typed and the results after the databse was updated.**
+### **This is a screen capture of the empty database before the inputs were typed and the results after the database was updated.**
 <img src="public/assets/img/beforeAndAfter.png">
