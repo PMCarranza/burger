@@ -32,3 +32,6 @@ I put together this app following instructional direction, research, code review
 
 ### **This is a screen capture of the empty database before the inputs were typed and the results after the database was updated.**
 <img src="public/assets/img/beforeAndAfter.png">
+
+## **Roadmap**
+Now that the app works as it is supposed to I need to go back and polish the UI. 
